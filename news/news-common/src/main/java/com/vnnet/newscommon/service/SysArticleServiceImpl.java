@@ -1,5 +1,6 @@
 package com.vnnet.newscommon.service;
 
+import com.github.pagehelper.PageHelper;
 import com.vnnet.newscommon.bean.PageRequest;
 import com.vnnet.newscommon.bean.PageResult;
 import com.vnnet.newscommon.model.SysArticle;
