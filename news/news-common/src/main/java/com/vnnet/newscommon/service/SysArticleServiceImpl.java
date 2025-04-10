@@ -1,11 +1,14 @@
 package com.vnnet.newscommon.service;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.vnnet.newscommon.bean.PageRequest;
 import com.vnnet.newscommon.bean.PageResult;
 import com.vnnet.newscommon.model.SysArticle;
 import com.vnnet.newscommon.model.SysArticleExample;
+import com.vnnet.newscommon.model.SysUserExample;
 import com.vnnet.newscommon.persistence.SysArticleMapper;
+import com.vnnet.newscommon.utils.MybatisPageHelper;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,24 +43,35 @@ public class SysArticleServiceImpl implements SysArticleService {
 //
 //    @Override
 //    public PageResult show(PageRequest pageRequest) {
-//        int pageNum = pageRequest.getPageNum() <= 0 ? 1 : pageRequest.getPageNum();
-//        int pageSize = pageRequest.getPageSize() <= 0 ? 10 : pageRequest.getPageSize();
+//        try{
+//            int pageNum = pageRequest.getPageNum();
+//            int pageSize = pageRequest.getPageSize();
+//            if (pageNum < 1)
+//                pageNum = 1;
+//            if (pageSize < 0)
+//                pageSize = 10;
 //
-//        String title = (String) pageRequest.getFilters().getOrDefault("title", "");
-//        String content = (String) pageRequest.getFilters().getOrDefault("content", "");
-//        String publishedStr = (String) pageRequest.getFilters().getOrDefault("isPublished", "");
-//        Boolean isPublished = publishedStr.equals("") ? null : Boolean.valueOf(publishedStr);
+//            String cTieuDe  = MybatisPageHelper.getColumnFilterValue(pageRequest, "cTieuDe");
+//            String cMoTa  = MybatisPageHelper.getColumnFilterValue(pageRequest, "cMoTa");
+//            String nTinhTrang = (MybatisPageHelper.getColumnFilterValue(pageRequest, "nTinhTrang"));
 //
-//        PageHelper.startPage(pageNum, pageSize);
-//        List<Article> list = articleMapper.selectByFilter(title, content, isPublished);
-//        PageInfo<Article> pageInfo = new PageInfo<>(list);
+//            SysUserExample nExample = new SysUserExample();
+//            SysUserExample.Criteria criteria = nExample.createCriteria();
+//            criteria.("%" + cTieuDe + "%");
+//            criteria.andFullNameLike("%" + cMoTa + "%");
 //
-//        PageResult result = new PageResult();
-//        result.setPageNum(pageNum);
-//        result.setPageSize(pageSize);
-//        result.setTotal(pageInfo.getTotal());
-//        result.setContent(pageInfo.getList());
+//            if (nTinhTrang.length() > 0) {
+//                criteria.andNTinhTrangEqualTo(Byte.valueOf(nTinhTrang));
+//            }
 //
-//        return result;
+//            nExample.setOrderByClause("d_ngay_tao DESC");
+//
+//            PageHelper.startPage(pageNum, pageSize);
+//            List<SysBaiViet> nRecords = sysBaiVietMapper.selectByExample(nExample);
+//            return MybatisPageHelper.getPageResult(pageRequest, new PageInfo(nRecords));
+//        } catch (Exception ex) {
+//            logger.error(ex.getMessage(), ex.fillInStackTrace());
+//        }
+//        return null;
 //    }
 }

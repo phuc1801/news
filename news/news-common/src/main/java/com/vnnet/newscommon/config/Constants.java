@@ -35,8 +35,8 @@ public class  Constants {
     public static final String PROXY_HOST = "10.151.151.50";
     public static final int PROXY_PORT = 9999;
 
-    public static final String PRODUCT_IMAGE_PATH = "/opt/MiniAppCongAn/image/";
-    public static final String NEWS_IMAGE_PATH = "/opt/MiniAppCongAn/image/news/";
+    public static final String PRODUCT_IMAGE_PATH = "D:/Java/images";
+    public static final String NEWS_IMAGE_PATH = "D:/Java/images/";
     public static final String SUPPLY_IMAGE_PATH = "/opt/MiniAppCongAn/image/supply/";
     public static final String SUPPLY_CERTIFICATE_PATH = "/opt/MiniAppCongAn/certificate/";
     public static final String VIOLATION_IMG = "/opt/MiniAppCongAn/image/violation/";

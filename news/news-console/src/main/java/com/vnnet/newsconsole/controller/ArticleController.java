@@ -31,7 +31,7 @@ public class ArticleController {
         return "ok";
     }
 
-
+    @Autowired
     private SysArticleService sysArticleService;
 //
 //    @Autowired
